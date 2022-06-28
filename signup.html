@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <script src="./bootstrap.min.js"></script>
+    <script src="./jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+    
+        <nav class="navbar navbar-expand-lg bg-info" >
+            <div class="container-fluid">
+              <img src="./images/logo-kerala.png" alt="Logo" style="width:60px;" class="rounded-pill">
+              <a class="navbar-brand" href="index.html">KERALA TOURISM</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link" aria-current="page" href="districts.html">DISTRICTS</a>
+                  <a class="nav-link" href="#">EXPLORATIONS</a>
+                  <a class="nav-link" href="login.html">LOGIN</a>
+                  <a class="nav-link active" href="signup.html">SIGNUP</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+      <form action="./login.html" id="form" onsubmit="return validate2()" >
+        <div class="mb-3">
+            <label for="exampleInputname1" class="form-label">Name</label>
+            <input type="name" class="form-control" id="name">
+          </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+        <div class="mb-3">
+            <label for="exampleinputcontactnumber1" class="form-label">Contact Number</label>
+            <input  type="text" class="form-control" id="contactnumber">
+
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input  type="password" class="form-control" id="Password" onchange="return val()">
+           <span id="strength"></span></p>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputC-Password1" class="form-label">Confirm Password</label>
+          <input type="password" class="form-control" id="C-Password">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">By joining,I agree to the Terms and Privacy Policy</label>
+        </div>
+        <input type="submit" class="btn btn-primary"></input>
+      </form>
+
+      <script>
+
+
+        let name=document.getElementById("name");
+        let email=document.getElementById("Email");
+        let contactnumber=document.getElementById("contactnumber");
+        let pwd=document.getElementById("Password");
+        let Cpwd=document.getElementById("C-Password");
+        const mob=/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+        const regexp = /^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9\-]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/
+
+      
+        
+
+        function validate2(){
+          if (name.value.trim()==""){
+            alert("Name cannot be empty!");
+            return false;
+          }
+          else if(email.value.trim()==""){
+            alert("Email cannot be empty!");
+            return false;
+            
+          }
+          else if(!regexp.test(email.value)){
+            alert("Email dosent meet standard format!");
+            return false;
+          }
+          else if(contactnumber.value.trim()==""){
+            alert("Contact number cannot be empty!");
+            return false;
+          }
+          else if(!mob.test(contactnumber.value)){
+          alert("Contact doesnt meet standard format!");
+          return false;
+          }
+          else if(pwd.value.trim()==""||Cpwd.value.trim()==""){
+            alert("Password cannot be empty!");
+            return false; 
+          }
+          else if(Cpwd.value!==pwd.value){
+            alert("Check if you have entered same password again!");
+            return false; 
+          }
+            else{
+            return true;
+          }
+        }
+        
+        let pregx= /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+        function val(){
+          if(!pregx.test(pwd.value)){
+            alert("your password is not strong enough");
+            pwd.style.border="2px solid red";
+            return false;
+          }else{
+            pwd.style.border="2px solid green";
+            return true;
+          }
+}
+        
+
+        
+         
+        
+        
+        </script>
+      
+  </body>
+</html>
